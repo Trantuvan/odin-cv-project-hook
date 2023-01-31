@@ -9,9 +9,27 @@
   grid-area: forms;
   background-color: var(--bg-form-color);
   padding: 1em 2em 0.8em 2.8em;
+  display: grid;
+  gap: 2em;
 }
 
 .resume-container {
   grid-area: resume;
   background-color: var(--bg-cv-color);
 }
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  /* position: relative; */
+}
+
+/* .form-section:not(:last-child)::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12em;
+  content: '';
+  border: 1px solid #ededef;
+} */

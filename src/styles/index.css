@@ -4,28 +4,48 @@
 
   --bg-form-color: hsl(0, 0%, 100%);
   --bg-input-color: hsl(240, 5%, 96%);
+  --bg-input-focus-color: hsl(262, 80%, 98%);
+  --outline-input-focus-color: hsl(257, 80%, 53%);
   --bg-cv-color: hsl(0, 0%, 98%);
   --cv-primary-color: hsl(204, 52%, 41%);
   --bg-cv-nav-color: hsl(0, 0%, 95%);
   --primary-color: hsl(257, 74%, 40%);
   --white-color: hsl(264, 56%, 98%);
   --text-color: hsl(240, 5%, 19%);
-  --text-label: hsl(240, 4%, 38%);
+  --text-input-color: hsl(240, 5%, 19%);
+  --text-label: hsl(240, 5%, 34%);
   --disabled-color: hsl(236, 9%, 67%);
   --border-color: hsl(240, 3%, 65%);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
 .form-control {
   display: flex;
+  gap: 0.8rem;
   flex-direction: column;
 }
 
 label {
   color: var(--text-label);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 input {
-  color: var(--text-color);
+  font-size: 1.6rem;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 0.8rem 1.2rem;
+  color: var(--text-input-color);
   background-color: var(--bg-input-color);
+}
+
+input:focus {
+  outline: 1px solid var(--outline-input-focus-color);
+  background-color: var(--bg-input-focus-color);
 }
