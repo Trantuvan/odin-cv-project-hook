@@ -8,6 +8,7 @@
 .form-container {
   grid-area: forms;
   background-color: var(--bg-form-color);
+  padding: 1em 2em 0.8em 2.8em;
 }
 
 .resume-container {
