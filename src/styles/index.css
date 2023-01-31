@@ -1,0 +1,15 @@
+:root {
+  font-size: 62.5%;
+
+  --bg-form-color: hsl(0, 0%, 100%);
+  --bg-input-color: hsl(240, 5%, 96%);
+  --bg-cv-color: hsl(0, 0%, 98%);
+  --cv-primary-color: hsl(204, 52%, 41%);
+  --bg-cv-nav-color: hsl(0, 0%, 95%);
+  --primary-color: hsl(257, 74%, 40%);
+  --white-color: hsl(264, 56%, 98%);
+  --text-color: hsl(240, 5%, 19%);
+  --text-label: hsl(240, 4%, 38%);
+  --disabled-color: hsl(236, 9%, 67%);
+  --border-color: hsl(240, 3%, 65%);
+}
