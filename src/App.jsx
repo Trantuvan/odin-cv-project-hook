@@ -5,6 +5,8 @@ import styles from './styles/App.module.css';
 import FormToolBar from './components/common/form-tool-bar';
 import FormPersonal from './components/personal-form/';
 import defaultImg from './imgs/default-avatar.png';
+import { useToggle } from './hooks/useToggle';
+import FormEducation from './components/education-form/';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
@@ -18,6 +20,10 @@ function App() {
     city: 'Ho Chi Minh',
     photoUrl: defaultImg,
   }));
+
+  const {
+    state: { showForm1, showForm2, showForm3 },
+  } = useToggle();
 
   function handlePersonChange(e) {
     const name = e.target.name;
@@ -39,13 +45,15 @@ function App() {
     <div className={clsx(styles.grid2Cols)}>
       <div className={clsx(styles.formContainer)}>
         <div className={styles.formSection}>
-          <FormToolBar formName="Personal details" />
-          <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+          <FormToolBar formName="Personal details" formNumber={1} isOpen={showForm1} />
+          {showForm1 && (
+            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+          )}
         </div>
-        {/* <div className={styles.formSection}>
-          <FormToolBar formName="Personal details" />
-          <FormPersonal form={personal} handleChange={handlePersonChange} />
-        </div> */}
+        <div className={styles.formSection}>
+          <FormToolBar formName="Education" formNumber={2} isOpen={showForm2} />
+          {showForm2 && <FormEducation />}
+        </div>
       </div>
       <div className={clsx(styles.resumeContainer)}>resume</div>
     </div>
