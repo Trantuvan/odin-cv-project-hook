@@ -1,5 +1,6 @@
 :root {
   font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
 
   --bg-form-color: hsl(0, 0%, 100%);
   --bg-input-color: hsl(240, 5%, 96%);
