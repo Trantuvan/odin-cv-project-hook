@@ -26,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
+    "react-icons": "^4.7.1",
     "vite": "^4.0.0",
     "vite-plugin-eslint": "^1.8.1"
   }
