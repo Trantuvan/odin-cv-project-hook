@@ -1,10 +1,11 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import eslint from "vite-plugin-eslint";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), { ...eslint({ cache: true, fix: true }), apply: "build" }],
+  base: '/odin-cv-project-hook/',
+  plugins: [react(), { ...eslint({ cache: true, fix: true }), apply: 'build' }],
   server: {
     open: true,
     port: 3000,
