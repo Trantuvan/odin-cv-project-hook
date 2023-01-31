@@ -1,5 +1,29 @@
-.form-toolbar {
+.form-toolbar-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-toolbar-title {
   font-size: 2rem;
   line-height: 2.8rem;
   font-weight: 500;
+}
+
+.form-toolbar-action {
+  padding: 0.4em;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.form-toolbar-action:hover,
+.form-toolbar-action:focus {
+  outline: 1px solid var(--outline-input-focus-color);
+  background-color: var(--bg-input-focus-color);
+}
+
+.btn-action {
+  width: 24px;
+  height: 24px;
 }

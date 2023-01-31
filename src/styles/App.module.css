@@ -10,7 +10,7 @@
   background-color: var(--bg-form-color);
   padding: 1em 2em 0.8em 2.8em;
   display: grid;
-  gap: 2em;
+  gap: 3em;
 }
 
 .resume-container {
@@ -24,8 +24,8 @@
   gap: 0.8rem;
   /* position: relative; */
 }
-
-/* .form-section:not(:last-child)::after {
+/* 
+.form-section:not(:last-child)::after {
   position: absolute;
   left: 0;
   right: 0;
