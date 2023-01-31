@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputText } from '../common/form-controls';
+import { Avatar, InputText } from '../common/form-controls';
 
-function FormPersonal({ form, handleChange }) {
+function FormPersonal({ form, handleChange, handlePreview }) {
   return (
     <form>
+      <Avatar form={form} handlePreview={handlePreview} />
       <InputText
         labelName="Given Name"
         inputId="given-name"
@@ -43,5 +44,6 @@ function FormPersonal({ form, handleChange }) {
 FormPersonal.propTypes = {
   form: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handlePreview: PropTypes.func.isRequired,
 };
 export default FormPersonal;

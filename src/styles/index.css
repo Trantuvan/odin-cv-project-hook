@@ -16,6 +16,8 @@
   --text-label: hsl(240, 5%, 34%);
   --disabled-color: hsl(236, 9%, 67%);
   --border-color: hsl(240, 3%, 65%);
+
+  --avatar-width: 128px;
 }
 
 form {

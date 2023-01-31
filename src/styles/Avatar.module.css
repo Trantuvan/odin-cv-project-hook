@@ -1,0 +1,9 @@
+label {
+  width: min(var(--avatar-width), 100%);
+}
+
+img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: min(var(--avatar-width), 100%);
+}
