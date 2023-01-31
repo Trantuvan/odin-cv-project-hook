@@ -1,0 +1,19 @@
+.grid-avatar-inputs {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: 20% 1fr;
+  grid-template-areas: 'avatar inputs';
+}
+
+.grid-2-cols-forms {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    'input1 input2'
+    'input3 input3';
+}
+
+.grid-2-cols-forms > div:last-child {
+  grid-area: input3;
+}
