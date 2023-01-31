@@ -1,0 +1,16 @@
+.grid-2-cols {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'forms resume';
+}
+
+.form-container {
+  grid-area: forms;
+  background-color: var(--bg-form-color);
+}
+
+.resume-container {
+  grid-area: resume;
+  background-color: var(--bg-cv-color);
+}
