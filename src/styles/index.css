@@ -14,3 +14,18 @@
   --disabled-color: hsl(236, 9%, 67%);
   --border-color: hsl(240, 3%, 65%);
 }
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: var(--text-label);
+  font-size: 1.2rem;
+}
+
+input {
+  color: var(--text-color);
+  background-color: var(--bg-input-color);
+}
