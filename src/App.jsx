@@ -52,7 +52,15 @@ function App() {
         </div>
         <div className={styles.formSection}>
           <FormToolBar formName="Education" formNumber={2} isOpen={showForm2} />
-          {showForm2 && <FormEducation />}
+          {showForm2 && (
+            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+          )}
+        </div>
+        <div className={styles.formSection}>
+          <FormToolBar formName="Employment" formNumber={3} isOpen={showForm2} />
+          {showForm3 && (
+            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+          )}
         </div>
       </div>
       <div className={clsx(styles.resumeContainer)}>resume</div>
