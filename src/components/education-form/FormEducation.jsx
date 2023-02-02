@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { InputText } from '../common/form-controls';
+import { InputText, TextArea } from '../common/form-controls';
 import styles from '../../styles/FormEducation.module.css';
 import clsx from 'clsx';
 
@@ -51,6 +51,13 @@ function FormEducation() {
           handleChange={handleEducationChange}
         />
       </div>
+      <TextArea
+        labelName="Description"
+        inputId="desc"
+        inputName="description"
+        form={educationForm}
+        handleChange={handleEducationChange}
+      />
     </>
   );
 }
