@@ -1,0 +1,4 @@
+.month-year-container {
+  display: flex;
+  gap: 1em;
+}

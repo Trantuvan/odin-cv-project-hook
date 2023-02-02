@@ -1,0 +1,13 @@
+.checkbox-container {
+  display: flex;
+}
+
+.checkbox-form-control {
+  display: flex;
+  gap: 0.5em;
+}
+
+.checkbox-form-control > input[type='checkbox'] {
+  cursor: pointer;
+  color: var(--primary-color);
+}

@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function MonthPicker({ selectName, handleSelectChange }) {
+function MonthPicker({ selectId, handleSelectChange, form }) {
+  let isPresent;
+  if (form !== undefined) {
+    ({ isPresent } = form);
+  }
+
   return (
     <>
-      <select name={selectName} defaultValue={'default'} onChange={handleSelectChange}>
-        <option value="default" disabled>
+      <select
+        name="monthPicker"
+        defaultValue="month"
+        onChange={(e) => handleSelectChange(e, selectId)}
+        disabled={!isPresent ? false : true}
+      >
+        <option value="month" disabled>
           Month
         </option>
         <option value="Jan">Jan</option>
@@ -26,8 +36,9 @@ function MonthPicker({ selectName, handleSelectChange }) {
 }
 
 MonthPicker.propTypes = {
-  selectName: PropTypes.string.isRequired,
+  selectId: PropTypes.string.isRequired,
   handleSelectChange: PropTypes.func.isRequired,
+  form: PropTypes.object,
 };
 
-export { MonthPicker };
+export default MonthPicker;
