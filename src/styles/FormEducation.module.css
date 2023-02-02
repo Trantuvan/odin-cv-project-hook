@@ -10,3 +10,10 @@
 .grid-2-cols > *:first-of-type {
   grid-area: form1;
 }
+
+.grid-date-time {
+  display: grid;
+  gap: 1.4em;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'start end';
+}

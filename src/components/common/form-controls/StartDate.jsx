@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MonthPicker } from '../time-picker/MonthPicker';
+import MonthYearPicker from '../time-picker/MonthYearPicker';
 
 function StartDate({ handleSelectChange }) {
   return (
     <div className="form-control">
       <label htmlFor="start-date">Start date</label>
-      <MonthPicker selectId="start-date" selectName="startDate" handleSelectChange={handleSelectChange} />
+      <MonthYearPicker selectId="start-date" handleChange={handleSelectChange} />
     </div>
   );
 }
