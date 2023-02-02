@@ -1,7 +1,7 @@
 .grid-avatar-inputs {
   display: grid;
-  gap: 0.5em;
-  grid-template-columns: 1fr 3fr;
+  gap: 1.4em;
+  grid-template-columns: 1fr 4fr;
   grid-template-areas: 'avatar inputs';
 }
 
