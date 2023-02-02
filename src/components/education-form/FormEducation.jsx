@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
+import uniqid from 'uniqid';
 
 import { EndDate, InputText, StartDate, TextArea } from '../common/form-controls';
 import styles from '../../styles/FormEducation.module.css';
 
 function FormEducation() {
   const [educationForm, setEducation] = useState(() => ({
+    id: uniqid('edu_'),
     education: 'Bachelor of Industrial Engineering System',
     school: 'International University of HCM city',
     city: 'HCM city',
