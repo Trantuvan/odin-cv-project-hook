@@ -7,6 +7,7 @@ import FormPersonal from './components/personal-form/';
 import defaultImg from './imgs/default-avatar.png';
 import { useToggle } from './hooks/useToggle';
 import FormEducation from './components/education-form/';
+import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
@@ -53,7 +54,9 @@ function App() {
         <div className={styles.formSection}>
           <FormToolBar formName="Education" formNumber={2} isOpen={showForm2} />
           {showForm2 && (
-            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+            <FormWrapper formName="Education">
+              <FormEducation />
+            </FormWrapper>
           )}
         </div>
         <div className={styles.formSection}>
