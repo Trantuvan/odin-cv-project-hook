@@ -39,7 +39,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   font-size: 1.6rem;
   outline: none;
   border: none;
@@ -50,7 +51,8 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: 1px solid var(--outline-input-focus-color);
   background-color: var(--bg-input-focus-color);
 }
