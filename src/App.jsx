@@ -57,9 +57,11 @@ function App() {
         <div className={styles.formSection}>
           <FormToolBar formName="Education" formNumber={2} isOpen={showForm2} />
           {showForm2 && (
-            <FormWrapper formName="Education">
-              <FormEducation />
-            </FormWrapper>
+            <FormWrapper
+              formName="Education"
+              FormTemplate={FormEducation}
+              listArray={<ListArr listArr={eduArr} defaultText="[Education]" />}
+            />
           )}
         </div>
         <div className={styles.formSection}>
