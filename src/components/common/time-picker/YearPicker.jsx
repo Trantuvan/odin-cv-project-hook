@@ -12,21 +12,21 @@ const generateYears = () => {
 
 function YearPicker({ selectId, handleSelectChange, form }) {
   const yearArray = generateYears();
-  let isPresent;
-  if (form !== undefined) {
-    ({ isPresent } = form);
+  let value;
+
+  switch (selectId) {
+    case 'start-date':
+      ({ startYear: value } = form);
+      break;
+    case 'end-date':
+      ({ endYear: value } = form);
+      break;
+    default:
+      throw new Error('Unsupported select type: ' + selectId);
   }
   return (
     <>
-      <select
-        name="yearPicker"
-        defaultValue="year"
-        onChange={(e) => handleSelectChange(e, selectId)}
-        disabled={!isPresent ? false : true}
-      >
-        <option value="year" disabled>
-          Year
-        </option>
+      <select name="yearPicker" value={value} onChange={(e) => handleSelectChange(e, selectId)}>
         {yearArray.map((year, index) => (
           <option key={index} value={year}>
             {year}
@@ -40,6 +40,6 @@ function YearPicker({ selectId, handleSelectChange, form }) {
 YearPicker.propTypes = {
   selectId: PropTypes.string.isRequired,
   handleSelectChange: PropTypes.func.isRequired,
-  form: PropTypes.object,
+  form: PropTypes.object.isRequired,
 };
 export default YearPicker;

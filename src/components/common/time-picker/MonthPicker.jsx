@@ -2,34 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function MonthPicker({ selectId, handleSelectChange, form }) {
-  let isPresent;
   let value;
-  if (form !== undefined) {
-    ({ isPresent } = form);
 
-    switch (selectId) {
-      case 'start-date':
-        ({ startMonth: value } = form);
-        break;
-      case 'end-date':
-        ({ endMonth: value } = form);
-        break;
-      default:
-        throw new Error('Unsupported select type: ' + selectId);
-    }
+  switch (selectId) {
+    case 'start-date':
+      ({ startMonth: value } = form);
+      break;
+    case 'end-date':
+      ({ endMonth: value } = form);
+      break;
+    default:
+      throw new Error('Unsupported select type: ' + selectId);
   }
   return (
     <>
-      <select
-        name="monthPicker"
-        // defaultValue="month"
-        value={value}
-        onChange={(e) => handleSelectChange(e, selectId)}
-        disabled={!isPresent ? false : true}
-      >
-        <option value="month" disabled>
-          Month
-        </option>
+      <select name="monthPicker" value={value} onChange={(e) => handleSelectChange(e, selectId)}>
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>
         <option value="Mar">Mar</option>
@@ -50,7 +37,7 @@ function MonthPicker({ selectId, handleSelectChange, form }) {
 MonthPicker.propTypes = {
   selectId: PropTypes.string.isRequired,
   handleSelectChange: PropTypes.func.isRequired,
-  form: PropTypes.object,
+  form: PropTypes.object.isRequired,
 };
 
 export default MonthPicker;
