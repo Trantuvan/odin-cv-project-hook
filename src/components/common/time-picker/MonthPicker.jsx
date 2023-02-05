@@ -3,15 +3,27 @@ import PropTypes from 'prop-types';
 
 function MonthPicker({ selectId, handleSelectChange, form }) {
   let isPresent;
+  let value;
   if (form !== undefined) {
     ({ isPresent } = form);
-  }
 
+    switch (selectId) {
+      case 'start-date':
+        ({ startMonth: value } = form);
+        break;
+      case 'end-date':
+        ({ endMonth: value } = form);
+        break;
+      default:
+        throw new Error('Unsupported select type: ' + selectId);
+    }
+  }
   return (
     <>
       <select
         name="monthPicker"
-        defaultValue="month"
+        // defaultValue="month"
+        value={value}
         onChange={(e) => handleSelectChange(e, selectId)}
         disabled={!isPresent ? false : true}
       >

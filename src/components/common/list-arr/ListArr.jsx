@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import ListItem from './ListItem';
 import styles from '../../../styles/ListArr.module.css';
 
-function ListArr({ listArr, dispatch, defaultText }) {
+function ListArr({ listArr, dispatch, defaultText, handleToggle, handleIndexItem, handleEditState }) {
   const generatedArr = useMemo(() => {
     const arr = [];
 
@@ -34,6 +34,9 @@ function ListArr({ listArr, dispatch, defaultText }) {
               index={item.id}
               defaultText={defaultText}
               dispatch={dispatch}
+              handleToggle={handleToggle}
+              handleIndexItem={handleIndexItem}
+              handleEditState={handleEditState}
               content={
                 item.education.length === 0 && item.school.length === 0 && item.city.length === 0 ? null : content
               }
@@ -45,7 +48,7 @@ function ListArr({ listArr, dispatch, defaultText }) {
       }
     });
     return arr;
-  }, [defaultText, listArr, dispatch]);
+  }, [defaultText, listArr, dispatch, handleToggle, handleIndexItem, handleEditState]);
 
   return <>{generatedArr}</>;
 }
@@ -54,6 +57,9 @@ ListArr.propTypes = {
   listArr: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   defaultText: PropTypes.string.isRequired,
+  handleToggle: PropTypes.func,
+  handleIndexItem: PropTypes.func,
+  handleEditState: PropTypes.func,
 };
 
 export default ListArr;

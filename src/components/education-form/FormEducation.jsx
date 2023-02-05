@@ -6,22 +6,32 @@ import uniqid from 'uniqid';
 import { EndDate, InputText, StartDate, TextArea } from '../common/form-controls';
 import styles from '../../styles/FormEducation.module.css';
 import { AiOutlineCheck } from 'react-icons/ai';
-import { useEduArray, ADD } from '../../hooks/useEduArray';
+import { useEduArray, ADD, EDIT } from '../../hooks/useEduArray';
 
-function FormEducation({ handleToggle }) {
-  const [educationForm, setEducation] = useState(() => ({
-    id: uniqid('edu_'),
-    education: 'Bachelor of Industrial Engineering System',
-    school: 'International University of HCM city',
-    city: 'HCM city',
-    startMonth: '',
-    startYear: '',
-    endMonth: '',
-    endYear: '',
-    isPresent: false,
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
-  }));
+function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
+  const { state: eduArr, dispatch } = useEduArray();
+
+  function initialized() {
+    console.log(isEdit);
+    if (isEdit === true) {
+      console.log(eduArr.find((item) => item.id === itemIndex));
+      return eduArr.find((item) => item.id === itemIndex);
+    }
+    return {
+      id: uniqid('edu_'),
+      education: 'Bachelor of Industrial Engineering System',
+      school: 'International University of HCM city',
+      city: 'HCM city',
+      startMonth: '',
+      startYear: '',
+      endMonth: '',
+      endYear: '',
+      isPresent: false,
+      description:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
+    };
+  }
+  const [educationForm, setEducation] = useState(initialized);
 
   const handleEducationChange = (e) => {
     const name = e.target.name;
@@ -61,10 +71,15 @@ function FormEducation({ handleToggle }) {
     }
   };
 
-  const { dispatch } = useEduArray();
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isEdit === true) {
+      dispatch({ type: EDIT, payload: educationForm });
+      handleEditState(false);
+      handleToggle(false);
+      return;
+    }
+
     dispatch({ type: ADD, payload: educationForm });
     setEducation({
       id: uniqid('edu_'),
@@ -126,6 +141,9 @@ function FormEducation({ handleToggle }) {
 
 FormEducation.propTypes = {
   handleToggle: PropTypes.func.isRequired,
+  itemIndex: PropTypes.string.isRequired,
+  isEdit: PropTypes.bool.isRequired,
+  handleEditState: PropTypes.func.isRequired,
 };
 
 export default FormEducation;

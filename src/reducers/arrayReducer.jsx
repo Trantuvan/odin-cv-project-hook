@@ -4,8 +4,15 @@ function arrayReducer(state, action) {
   switch (action.type) {
     case ADD:
       return [...state, action.payload];
+
     case EDIT:
-      break;
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return item;
+        }
+      });
 
     case REMOVE:
       return state.filter((item) => item.id !== action.payload);
