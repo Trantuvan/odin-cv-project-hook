@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import uniqid from 'uniqid';
 
 import { EndDate, InputText, StartDate, TextArea } from '../common/form-controls';
 import styles from '../../styles/FormEducation.module.css';
+import { AiOutlineCheck } from 'react-icons/ai';
+import { useEduArray, ADD } from '../../hooks/useEduArray';
 
-function FormEducation() {
+function FormEducation({ handleToggle }) {
   const [educationForm, setEducation] = useState(() => ({
     id: uniqid('edu_'),
     education: 'Bachelor of Industrial Engineering System',
@@ -58,8 +61,28 @@ function FormEducation() {
     }
   };
 
+  const { dispatch } = useEduArray();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: ADD, payload: educationForm });
+    setEducation({
+      id: uniqid('edu_'),
+      education: '',
+      school: '',
+      city: '',
+      startMonth: '',
+      startYear: '',
+      endMonth: '',
+      endYear: '',
+      isPresent: false,
+      description: '',
+    });
+    handleToggle(false);
+  };
+
   return (
-    <>
+    <form className={clsx('border')} onSubmit={handleSubmit}>
       <div className={clsx(styles.grid2Cols)}>
         <InputText
           labelName="Education"
@@ -94,8 +117,15 @@ function FormEducation() {
         form={educationForm}
         handleChange={handleEducationChange}
       />
-    </>
+      <button type="submit" className={clsx('btn-primary')}>
+        <AiOutlineCheck className={clsx('submit-icon')} /> Done
+      </button>
+    </form>
   );
 }
+
+FormEducation.propTypes = {
+  handleToggle: PropTypes.func.isRequired,
+};
 
 export default FormEducation;

@@ -8,6 +8,8 @@ import defaultImg from './imgs/default-avatar.png';
 import { useToggle } from './hooks/useToggle';
 import FormEducation from './components/education-form/';
 import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
+import { useEduArray } from './hooks/useEduArray';
+import ListArr from './components/common/list-arr/ListArr';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
@@ -25,6 +27,7 @@ function App() {
   const {
     state: { showForm1, showForm2, showForm3 },
   } = useToggle();
+  const { state: eduArr } = useEduArray();
 
   function handlePersonChange(e) {
     const name = e.target.name;
