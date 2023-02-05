@@ -27,7 +27,7 @@ function App() {
   const {
     state: { showForm1, showForm2, showForm3 },
   } = useToggle();
-  const { state: eduArr } = useEduArray();
+  const { state: eduArr, dispatch: eduDispatch } = useEduArray();
 
   function handlePersonChange(e) {
     const name = e.target.name;
@@ -60,7 +60,7 @@ function App() {
             <FormWrapper
               formName="Education"
               FormTemplate={FormEducation}
-              listArray={<ListArr listArr={eduArr} defaultText="[Education]" />}
+              listArray={<ListArr listArr={eduArr} dispatch={eduDispatch} defaultText="[Education]" />}
             />
           )}
         </div>

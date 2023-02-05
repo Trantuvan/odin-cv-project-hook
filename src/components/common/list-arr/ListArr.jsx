@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import ListItem from './ListItem';
-import styles from '../../../styles/ListArr.module.css';
 import clsx from 'clsx';
 
-function ListArr({ listArr, defaultText }) {
+import ListItem from './ListItem';
+import styles from '../../../styles/ListArr.module.css';
+
+function ListArr({ listArr, dispatch, defaultText }) {
   const generatedArr = useMemo(() => {
     const arr = [];
 
@@ -32,6 +33,7 @@ function ListArr({ listArr, defaultText }) {
               key={item.id}
               index={item.id}
               defaultText={defaultText}
+              dispatch={dispatch}
               content={
                 item.education.length === 0 && item.school.length === 0 && item.city.length === 0 ? null : content
               }
@@ -43,13 +45,14 @@ function ListArr({ listArr, defaultText }) {
       }
     });
     return arr;
-  }, [defaultText, listArr]);
+  }, [defaultText, listArr, dispatch]);
 
   return <>{generatedArr}</>;
 }
 
 ListArr.propTypes = {
   listArr: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
   defaultText: PropTypes.string.isRequired,
 };
 
