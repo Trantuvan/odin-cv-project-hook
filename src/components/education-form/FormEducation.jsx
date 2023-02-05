@@ -12,9 +12,7 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
   const { state: eduArr, dispatch } = useEduArray();
 
   function initialized() {
-    console.log(isEdit);
     if (isEdit === true) {
-      console.log(eduArr.find((item) => item.id === itemIndex));
       return eduArr.find((item) => item.id === itemIndex);
     }
     return {
@@ -122,7 +120,7 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
         />
       </div>
       <div className={clsx(styles.gridDateTime)}>
-        <StartDate handleSelectChange={handleDateTimeChange} />
+        <StartDate form={educationForm} handleSelectChange={handleDateTimeChange} />
         <EndDate form={educationForm} handleSelectChange={handleDateTimeChange} handleChange={handleEducationChange} />
       </div>
       <TextArea

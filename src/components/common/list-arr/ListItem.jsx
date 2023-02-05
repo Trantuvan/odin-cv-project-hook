@@ -16,7 +16,6 @@ function ListItem({ defaultText, content, index, dispatch, handleToggle, handleI
           className={styles.btnActions}
           onClick={() => {
             handleToggle(true);
-            console.log(index);
             handleIndexItem(index);
             handleEditState(true);
           }}

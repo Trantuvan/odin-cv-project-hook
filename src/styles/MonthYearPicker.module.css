@@ -3,3 +3,8 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
