@@ -7,8 +7,9 @@ import FormPersonal from './components/personal-form/';
 import defaultImg from './imgs/default-avatar.png';
 import { useToggle } from './hooks/useToggle';
 import FormEducation from './components/education-form/';
+import FormEmployment from './components/employment-form/';
 import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
-import { useEduArray } from './hooks/useEduArray';
+import { useEduArray, useEmpArray } from './hooks/';
 import ListArr from './components/common/list-arr/ListArr';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     state: { showForm1, showForm2, showForm3 },
   } = useToggle();
   const { state: eduArr, dispatch: eduDispatch } = useEduArray();
+  const { state: empArr, dispatch: empDispatch } = useEmpArray();
 
   function handlePersonChange(e) {
     const name = e.target.name;
@@ -67,7 +69,11 @@ function App() {
         <div className={styles.formSection}>
           <FormToolBar formName="Employment" formNumber={3} isOpen={showForm2} />
           {showForm3 && (
-            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+            <FormWrapper
+              formName="Employment"
+              FormTemplate={FormEmployment}
+              listArray={<ListArr listArr={empArr} dispatch={empDispatch} defaultText="[Employment]" />}
+            />
           )}
         </div>
       </div>

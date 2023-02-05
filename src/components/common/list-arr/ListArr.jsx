@@ -43,6 +43,37 @@ function ListArr({ listArr, dispatch, defaultText, handleToggle, handleIndexItem
             />,
           );
           break;
+
+        case '[Employment]':
+          if (item.employer.length === 0) {
+            paragraph = `${item.city}`;
+          } else if (item.city.length === 0) {
+            paragraph = `${item.employer}`;
+          } else {
+            paragraph = `${item.employer}, ${item.city}`;
+          }
+          content = (
+            <div className={clsx(styles.contentWrapper)}>
+              <h4 className={clsx(styles.heading)}>{item.position}</h4>
+              <p className={clsx(styles.paragraph)}>{paragraph}</p>
+            </div>
+          );
+          arr.push(
+            <ListItem
+              key={item.id}
+              index={item.id}
+              defaultText={defaultText}
+              dispatch={dispatch}
+              handleToggle={handleToggle}
+              handleIndexItem={handleIndexItem}
+              handleEditState={handleEditState}
+              content={
+                item.position.length === 0 && item.employer.length === 0 && item.city.length === 0 ? null : content
+              }
+            />,
+          );
+          break;
+
         default:
           throw new Error('Unsupported list type: ' + item.type);
       }
