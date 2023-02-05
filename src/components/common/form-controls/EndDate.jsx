@@ -6,12 +6,13 @@ import MonthYearPicker from '../time-picker/MonthYearPicker';
 import styles from '../../../styles/EndDate.module.css';
 
 function EndDate({ handleSelectChange, handleChange, form }) {
+  const { isPresent } = form;
   return (
     <div className="form-control">
       <div className={clsx(styles.checkboxContainer)}>
         <label htmlFor="end-date">End date</label>
         <div className={clsx(styles.checkboxFormControl)}>
-          <input type="checkbox" name="isPresent" id="present" onChange={handleChange} />
+          <input type="checkbox" name="isPresent" id="present" checked={isPresent} onChange={handleChange} />
           <label htmlFor="present">Present</label>
         </div>
       </div>
