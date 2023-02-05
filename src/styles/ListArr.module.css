@@ -1,0 +1,17 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.heading {
+  font-size: 1.6em;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.paragraph {
+  color: var(--label-color);
+  font-size: 1.2em;
+  color: var(--text-color);
+}

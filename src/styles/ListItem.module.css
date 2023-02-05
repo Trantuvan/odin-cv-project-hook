@@ -1,0 +1,36 @@
+.item {
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  font-size: 1.6em;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-actions {
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding: 0.4em;
+  outline: none;
+}
+
+.btn-actions:hover,
+.btn-actions:focus {
+  outline: 1px solid var(--outline-input-focus-color);
+  background-color: var(--bg-input-focus-color);
+}
+
+.btn-actions > * {
+  width: 2rem;
+  height: 2rem;
+}
