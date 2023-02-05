@@ -7,6 +7,7 @@
 
 .form-container {
   width: min(67.2rem, 100%);
+  overflow-y: auto;
   margin: 0 auto;
   grid-area: forms;
   background-color: var(--bg-form-color);
