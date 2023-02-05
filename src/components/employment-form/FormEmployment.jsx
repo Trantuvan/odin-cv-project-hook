@@ -16,17 +16,17 @@ function FormEmployment({ handleToggle, itemIndex, isEdit, handleEditState }) {
       return empArr.find((item) => item.id === itemIndex);
     }
     return {
-      id: uniqid('edu_'),
-      position: 'Bachelor of Industrial Engineering System',
-      employer: 'International University of HCM city',
-      city: 'HCM city',
+      id: uniqid('emp_'),
+      position: 'FullStack Web NodeJS',
+      employer: 'FPT Software company',
+      city: 'HCM',
       startMonth: '',
       startYear: '',
       endMonth: '',
       endYear: '',
       isPresent: false,
       description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
+        'adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
     };
   }
   const [employmentForm, setEmployment] = useState(initialized);
