@@ -112,7 +112,7 @@ function CVHorizontal({
           </div>
           <div className={clsx(styles.personalContainer)}>
             <h4>Address</h4>
-            <p>{`${address}, ${postalCode}, ${city}`}</p>
+            <p>{`${address} ${postalCode} ${city}`}</p>
           </div>
         </div>
         <div className={clsx(styles.resumeContentMain)}>

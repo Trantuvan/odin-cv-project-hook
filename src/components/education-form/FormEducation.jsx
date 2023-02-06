@@ -17,16 +17,15 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
     }
     return {
       id: uniqid('edu_'),
-      education: 'Bachelor of Industrial Engineering System',
-      school: 'International University of HCM city',
-      city: 'HCM city',
+      education: '',
+      school: '',
+      city: '',
       startMonth: '',
       startYear: '',
       endMonth: '',
       endYear: '',
       isPresent: false,
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
+      description: '',
     };
   }
   const [educationForm, setEducation] = useState(initialized);

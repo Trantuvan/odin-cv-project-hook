@@ -17,16 +17,15 @@ function FormEmployment({ handleToggle, itemIndex, isEdit, handleEditState }) {
     }
     return {
       id: uniqid('emp_'),
-      position: 'FullStack Web NodeJS',
-      employer: 'FPT Software company',
-      city: 'HCM',
+      position: '',
+      employer: '',
+      city: '',
       startMonth: '',
       startYear: '',
       endMonth: '',
       endYear: '',
       isPresent: false,
-      description:
-        'adipisicing elit. Consequatur aspernatur incidunt possimus aperiam dolorem alias voluptatibus accusantium exercitationem ab repellendus?',
+      description: '',
     };
   }
   const [employmentForm, setEmployment] = useState(initialized);

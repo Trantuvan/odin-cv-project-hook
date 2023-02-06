@@ -15,14 +15,14 @@ import CVHorizontal from './components/cv-template/';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
-    givenName: 'Vander',
-    familyName: 'Tran',
-    email: 'tran@gmail.com',
-    headline: 'Work Hard Play Hard',
-    phoneNumber: '0369158125',
-    address: '82 297 street Phuoc Long B ward, District 9',
-    postalCode: '70000',
-    city: 'Ho Chi Minh',
+    givenName: '',
+    familyName: '',
+    email: '',
+    headline: '',
+    phoneNumber: '',
+    address: '',
+    postalCode: '',
+    city: '',
     photoUrl: defaultImg,
   }));
 
