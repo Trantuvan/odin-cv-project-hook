@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import styles from './styles/App.module.css';
 import FormToolBar from './components/common/form-tool-bar';
@@ -12,6 +12,8 @@ import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
 import { useEduArray, useEmpArray } from './hooks/';
 import ListArr from './components/common/list-arr/ListArr';
 import CVHorizontal from './components/cv-template/';
+import { AiFillFilePdf } from 'react-icons/ai';
+import { useReactToPrint } from 'react-to-print';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
@@ -29,8 +31,16 @@ function App() {
   const {
     state: { showForm1, showForm2, showForm3 },
   } = useToggle();
+
   const { state: eduArr, dispatch: eduDispatch } = useEduArray();
   const { state: empArr, dispatch: empDispatch } = useEmpArray();
+
+  const toPdfRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => toPdfRef.current,
+    documentTitle: 'resume generating',
+  });
 
   function handlePersonChange(e) {
     const name = e.target.name;
@@ -77,9 +87,12 @@ function App() {
             />
           )}
         </div>
+        <button type="button" className={clsx('btn-primary')} onClick={handlePrint}>
+          <AiFillFilePdf className={clsx('submit-icon')} /> Download
+        </button>
       </div>
       <div className={clsx(styles.resumeContainer)}>
-        <CVHorizontal personalDetails={personal} />
+        <CVHorizontal personalDetails={personal} ref={toPdfRef} />
       </div>
     </div>
   );
