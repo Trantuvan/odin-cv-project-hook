@@ -40,8 +40,9 @@
 
 .resume-content__hero {
   grid-area: hero;
-  display: grid;
-  gap: 0.4em;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
 }
 
 .resume-content__hero::after {
