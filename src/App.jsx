@@ -11,6 +11,7 @@ import FormEmployment from './components/employment-form/';
 import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
 import { useEduArray, useEmpArray } from './hooks/';
 import ListArr from './components/common/list-arr/ListArr';
+import CVHorizontal from './components/cv-template/';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
@@ -77,7 +78,9 @@ function App() {
           )}
         </div>
       </div>
-      <div className={clsx(styles.resumeContainer)}>resume</div>
+      <div className={clsx(styles.resumeContainer)}>
+        <CVHorizontal personalDetails={personal} />
+      </div>
     </div>
   );
 }
