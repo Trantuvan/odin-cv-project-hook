@@ -11,6 +11,82 @@ function CVHorizontal({
   const { state: eduArr } = useEduArray();
   const { state: empArr } = useEmpArray();
 
+  const educationList = eduArr.map((eduItem) => {
+    const sDate =
+      eduItem.startMonth.trim().length === 0 || eduItem.startYear.trim().length === 0
+        ? null
+        : `${eduItem.startMonth} ${eduItem.startYear}`;
+    let eDate;
+
+    if (eduItem.isPresent === true) {
+      eDate = 'Present';
+    } else {
+      eDate =
+        eduItem.endMonth.trim().length === 0 || eduItem.endYear.trim().length === 0
+          ? null
+          : `${eduItem.endMonth} ${eduItem.endYear}`;
+    }
+
+    let paragraph;
+
+    if (eduItem.school.length === 0) {
+      paragraph = `${eduItem.city}`;
+    } else if (eduItem.city.length === 0) {
+      paragraph = `${eduItem.school}`;
+    } else {
+      paragraph = `${eduItem.school}, ${eduItem.city}`;
+    }
+
+    return (
+      <div className={clsx(styles.listItem)} key={eduItem.id}>
+        <div className={clsx(styles.sectionHeading)}>
+          <h4>{eduItem.education}</h4>
+          <div className={clsx(styles.dateTime)}>{sDate === null || eDate === null ? null : `${sDate} - ${eDate}`}</div>
+        </div>
+        <div className={clsx(styles.address)}>{paragraph}</div>
+        <div className={clsx(styles.desc)}>{eduItem.description}</div>
+      </div>
+    );
+  });
+
+  const employmentList = empArr.map((empItem) => {
+    const sDate =
+      empItem.startMonth.trim().length === 0 || empItem.startYear.trim().length === 0
+        ? null
+        : `${empItem.startMonth} ${empItem.startYear}`;
+    let eDate;
+
+    if (empItem.isPresent === true) {
+      eDate = 'Present';
+    } else {
+      eDate =
+        empItem.endMonth.trim().length === 0 || empItem.endYear.trim().length === 0
+          ? null
+          : `${empItem.endMonth} ${empItem.endYear}`;
+    }
+
+    let paragraph;
+
+    if (empItem.employer.length === 0) {
+      paragraph = `${empItem.city}`;
+    } else if (empItem.city.length === 0) {
+      paragraph = `${empItem.employer}`;
+    } else {
+      paragraph = `${empItem.employer}, ${empItem.city}`;
+    }
+
+    return (
+      <div className={clsx(styles.listItem)} key={empItem.id}>
+        <div className={clsx(styles.sectionHeading)}>
+          <h4>{empItem.position}</h4>
+          <div className={clsx(styles.dateTime)}>{sDate === null || eDate === null ? null : `${sDate} - ${eDate}`}</div>
+        </div>
+        <div className={clsx(styles.address)}>{paragraph}</div>
+        <div className={clsx(styles.desc)}>{empItem.description}</div>
+      </div>
+    );
+  });
+
   return (
     <div className={clsx(styles.resume)}>
       <div className={clsx(styles.resumeHeader)} />
@@ -39,7 +115,16 @@ function CVHorizontal({
             <p>{`${address}, ${postalCode}, ${city}`}</p>
           </div>
         </div>
-        <div className={clsx(styles.resumeContentMain)}></div>
+        <div className={clsx(styles.resumeContentMain)}>
+          <div className={clsx(styles.educationSection)}>
+            <h3 className={clsx(styles.sectionTitle)}>Education</h3>
+            {educationList}
+          </div>
+          <div className={clsx(styles.employmentSection)}>
+            <h3 className={clsx(styles.sectionTitle)}>Employment</h3>
+            {employmentList}
+          </div>
+        </div>
       </div>
       <div className={clsx(styles.resumeFooter)} />
     </div>

@@ -95,6 +95,44 @@
 
 .resume-content__main {
   grid-area: main;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.education-section,
+.employment-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.section-heading h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.date-time,
+.address {
+  color: var(--cv-primary-color);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-color);
 }
 
 .section-title {
