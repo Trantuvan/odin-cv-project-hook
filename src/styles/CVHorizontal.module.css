@@ -1,0 +1,112 @@
+.resume {
+  aspect-ratio: 2/3;
+  width: min(65.2rem, 100%);
+  background-color: var(--bg-form-color);
+  box-shadow: 0 4px 6px -1px hsl(0deg 0% 0% / 10%), 0 2px 4px -2px hsl(0deg 0% 0% / 10%);
+  display: grid;
+  grid-template-rows: 4% 1fr 4%;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+}
+
+.resume-header,
+.resume-footer {
+  background-color: var(--cv-primary-color);
+}
+.resume-header {
+  grid-area: header;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.resume-footer {
+  grid-area: footer;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.resume-content {
+  grid-area: content;
+  padding: 2em;
+  display: grid;
+  gap: 1em;
+  grid-template-rows: 8% 1fr;
+  grid-template-columns: 30% 1fr;
+  grid-template-areas:
+    'hero hero'
+    'nav main';
+}
+
+.resume-content__hero {
+  grid-area: hero;
+  display: grid;
+  gap: 0.4em;
+}
+
+.resume-content__hero::after {
+  content: '';
+  border: 1px solid #ededef;
+}
+
+.resume-content__hero > h1 {
+  color: var(--cv-primary-color);
+  font-size: 2.4rem;
+}
+
+.resume-content__hero > p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.resume-content__nav {
+  grid-area: nav;
+  background-color: var(--bg-cv-nav-color);
+  padding: 0.5em;
+  display: flex;
+  gap: 0.6rem;
+  flex-direction: column;
+}
+
+.resume-content__nav > img {
+  border-radius: 3px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: min(var(--avatar-width), 100%);
+}
+
+.personal-container {
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+
+.personal-container > h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.personal-container > p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.resume-content__main {
+  grid-area: main;
+}
+
+.section-title {
+  color: var(--cv-primary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: column;
+}
+
+.section-title::after {
+  content: '';
+  border: 1px solid #d5d5e0f5;
+}
