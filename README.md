@@ -12,7 +12,7 @@ The design of the project is to showcase the understanding of concepts below:
 
 The aim of this app is to build your simple and minimalist resume!
 
-#### `Note`
+#### Note
 
 - This project will not support for responsive but [Odin-cv-project-class-component](https://github.com/Trantuvan/odin-cv-project) does.
 - For this small project useState is enough (no need for `useContext` & `useReducer`)
