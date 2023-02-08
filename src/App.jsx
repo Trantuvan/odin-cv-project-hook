@@ -39,7 +39,6 @@ function App() {
 
   const handlePrint = useReactToPrint({
     content: () => toPdfRef.current,
-    documentTitle: 'resume generating',
   });
 
   function handlePersonChange(e) {

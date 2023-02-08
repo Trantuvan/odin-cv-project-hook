@@ -1,5 +1,5 @@
 .resume {
-  aspect-ratio: 2/3;
+  aspect-ratio: 3/4;
   width: min(65.2rem, 100%);
   background-color: var(--bg-form-color);
   box-shadow: 0 4px 6px -1px hsl(0deg 0% 0% / 10%), 0 2px 4px -2px hsl(0deg 0% 0% / 10%);
@@ -32,7 +32,7 @@
   display: grid;
   gap: 1em;
   grid-template-rows: 8% 1fr;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 25% 1fr;
   grid-template-areas:
     'hero hero'
     'nav main';
@@ -74,6 +74,7 @@
   aspect-ratio: 1/1;
   object-fit: contain;
   width: min(var(--avatar-width), 100%);
+  margin: 0 auto;
 }
 
 .personal-container {
