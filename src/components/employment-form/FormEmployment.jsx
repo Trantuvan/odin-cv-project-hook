@@ -6,19 +6,19 @@ import uniqid from 'uniqid';
 import { EndDate, InputText, StartDate, TextArea } from '../common/form-controls';
 import styles from '../../styles/FormEducation.module.css';
 import { AiOutlineCheck } from 'react-icons/ai';
-import { useEduArray, ADD, EDIT } from '../../hooks/useEduArray';
+import { useEmpArray, ADD, EDIT } from '../../hooks/';
 
-function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
-  const { state: eduArr, dispatch } = useEduArray();
+function FormEmployment({ handleToggle, itemIndex, isEdit, handleEditState }) {
+  const { state: empArr, dispatch } = useEmpArray();
 
   function initialized() {
     if (isEdit === true) {
-      return eduArr.find((item) => item.id === itemIndex);
+      return empArr.find((item) => item.id === itemIndex);
     }
     return {
-      id: uniqid('edu_'),
-      education: '',
-      school: '',
+      id: uniqid('emp_'),
+      position: '',
+      employer: '',
       city: '',
       startMonth: '',
       startYear: '',
@@ -28,14 +28,14 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
       description: '',
     };
   }
-  const [educationForm, setEducation] = useState(initialized);
+  const [employmentForm, setEmployment] = useState(initialized);
 
-  const handleEducationChange = (e) => {
+  const handleEmploymentChange = (e) => {
     const name = e.target.name;
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
-    setEducation({
-      ...educationForm,
+    setEmployment({
+      ...employmentForm,
       [name]: value,
     });
   };
@@ -47,19 +47,19 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
     switch (selectId) {
       case 'start-date':
         if (name === 'monthPicker' && value !== 'month') {
-          setEducation({ ...educationForm, startMonth: value });
+          setEmployment({ ...employmentForm, startMonth: value });
         }
         if (name === 'yearPicker' && value !== 'year') {
-          setEducation({ ...educationForm, startYear: value });
+          setEmployment({ ...employmentForm, startYear: value });
         }
         break;
 
       case 'end-date':
         if (name === 'monthPicker' && value !== 'month') {
-          setEducation({ ...educationForm, endMonth: value });
+          setEmployment({ ...employmentForm, endMonth: value });
         }
         if (name === 'yearPicker' && value !== 'year') {
-          setEducation({ ...educationForm, endYear: value });
+          setEmployment({ ...employmentForm, endYear: value });
         }
         break;
 
@@ -71,17 +71,17 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isEdit === true) {
-      dispatch({ type: EDIT, payload: educationForm });
+      dispatch({ type: EDIT, payload: employmentForm });
       handleEditState(false);
       handleToggle(false);
       return;
     }
 
-    dispatch({ type: ADD, payload: educationForm });
-    setEducation({
+    dispatch({ type: ADD, payload: employmentForm });
+    setEmployment({
       id: uniqid('edu_'),
-      education: '',
-      school: '',
+      position: '',
+      employer: '',
       city: '',
       startMonth: '',
       startYear: '',
@@ -97,37 +97,41 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
     <form className={clsx('border')} onSubmit={handleSubmit}>
       <div className={clsx(styles.grid2Cols)}>
         <InputText
-          labelName="Education"
-          inputId="education"
-          inputName="education"
-          form={educationForm}
-          handleChange={handleEducationChange}
+          labelName="Position"
+          inputId="position"
+          inputName="position"
+          form={employmentForm}
+          handleChange={handleEmploymentChange}
         />
         <InputText
-          labelName="School"
-          inputId="school"
-          inputName="school"
-          form={educationForm}
-          handleChange={handleEducationChange}
+          labelName="Employer"
+          inputId="employer"
+          inputName="employer"
+          form={employmentForm}
+          handleChange={handleEmploymentChange}
         />
         <InputText
           labelName="City"
           inputId="city"
           inputName="city"
-          form={educationForm}
-          handleChange={handleEducationChange}
+          form={employmentForm}
+          handleChange={handleEmploymentChange}
         />
       </div>
       <div className={clsx(styles.gridDateTime)}>
-        <StartDate form={educationForm} handleSelectChange={handleDateTimeChange} />
-        <EndDate form={educationForm} handleSelectChange={handleDateTimeChange} handleChange={handleEducationChange} />
+        <StartDate form={employmentForm} handleSelectChange={handleDateTimeChange} />
+        <EndDate
+          form={employmentForm}
+          handleSelectChange={handleDateTimeChange}
+          handleChange={handleEmploymentChange}
+        />
       </div>
       <TextArea
         labelName="Description"
         inputId="desc"
         inputName="description"
-        form={educationForm}
-        handleChange={handleEducationChange}
+        form={employmentForm}
+        handleChange={handleEmploymentChange}
       />
       <button type="submit" className={clsx('btn-primary')}>
         <AiOutlineCheck className={clsx('submit-icon')} /> Done
@@ -136,11 +140,11 @@ function FormEducation({ handleToggle, itemIndex, isEdit, handleEditState }) {
   );
 }
 
-FormEducation.propTypes = {
+FormEmployment.propTypes = {
   handleToggle: PropTypes.func.isRequired,
   itemIndex: PropTypes.string.isRequired,
   isEdit: PropTypes.bool.isRequired,
   handleEditState: PropTypes.func.isRequired,
 };
 
-export default FormEducation;
+export default FormEmployment;

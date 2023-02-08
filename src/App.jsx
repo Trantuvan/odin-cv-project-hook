@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import styles from './styles/App.module.css';
 import FormToolBar from './components/common/form-tool-bar';
@@ -7,27 +7,39 @@ import FormPersonal from './components/personal-form/';
 import defaultImg from './imgs/default-avatar.png';
 import { useToggle } from './hooks/useToggle';
 import FormEducation from './components/education-form/';
+import FormEmployment from './components/employment-form/';
 import FormWrapper from './components/common/form-array-wrapper/FormWrapper';
-import { useEduArray } from './hooks/useEduArray';
+import { useEduArray, useEmpArray } from './hooks/';
 import ListArr from './components/common/list-arr/ListArr';
+import CVHorizontal from './components/cv-template/';
+import { AiFillFilePdf } from 'react-icons/ai';
+import { useReactToPrint } from 'react-to-print';
 
 function App() {
   const [personal, setPersonal] = useState(() => ({
-    givenName: 'Vander',
-    familyName: 'Tran',
-    email: 'tran@gmail.com',
-    headline: 'Work Hard Play Hard',
-    phoneNumber: '0369158125',
-    address: '82 297 street Phuoc Long B ward, District 9',
-    postalCode: '70000',
-    city: 'Ho Chi Minh',
+    givenName: '',
+    familyName: '',
+    email: '',
+    headline: '',
+    phoneNumber: '',
+    address: '',
+    postalCode: '',
+    city: '',
     photoUrl: defaultImg,
   }));
 
   const {
     state: { showForm1, showForm2, showForm3 },
   } = useToggle();
+
   const { state: eduArr, dispatch: eduDispatch } = useEduArray();
+  const { state: empArr, dispatch: empDispatch } = useEmpArray();
+
+  const toPdfRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => toPdfRef.current,
+  });
 
   function handlePersonChange(e) {
     const name = e.target.name;
@@ -67,11 +79,20 @@ function App() {
         <div className={styles.formSection}>
           <FormToolBar formName="Employment" formNumber={3} isOpen={showForm2} />
           {showForm3 && (
-            <FormPersonal form={personal} handleChange={handlePersonChange} handlePreview={handlePreviewPhoto} />
+            <FormWrapper
+              formName="Employment"
+              FormTemplate={FormEmployment}
+              listArray={<ListArr listArr={empArr} dispatch={empDispatch} defaultText="[Employment]" />}
+            />
           )}
         </div>
+        <button type="button" className={clsx('btn-primary')} onClick={handlePrint}>
+          <AiFillFilePdf className={clsx('submit-icon')} /> Download
+        </button>
       </div>
-      <div className={clsx(styles.resumeContainer)}>resume</div>
+      <div className={clsx(styles.resumeContainer)}>
+        <CVHorizontal personalDetails={personal} ref={toPdfRef} />
+      </div>
     </div>
   );
 }

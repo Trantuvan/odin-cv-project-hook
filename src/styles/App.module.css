@@ -20,6 +20,8 @@
 .resume-container {
   grid-area: resume;
   background-color: var(--bg-cv-color);
+  padding: 2em;
+  overflow-y: auto;
 }
 
 .form-section {
