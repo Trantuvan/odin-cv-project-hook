@@ -27,6 +27,9 @@ function YearPicker({ selectId, handleSelectChange, form }) {
   return (
     <>
       <select name="yearPicker" value={value} onChange={(e) => handleSelectChange(e, selectId)}>
+        <option value="" className="disabled">
+          year
+        </option>
         {yearArray.map((year, index) => (
           <option key={index} value={year}>
             {year}

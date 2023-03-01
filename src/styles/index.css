@@ -112,6 +112,12 @@ textarea {
   background-color: var(--bg-input-focus-color);
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  color: var(--border-color);
+}
+
 @media all {
   .page-break {
     display: none;

@@ -17,6 +17,9 @@ function MonthPicker({ selectId, handleSelectChange, form }) {
   return (
     <>
       <select name="monthPicker" value={value} onChange={(e) => handleSelectChange(e, selectId)}>
+        <option value="" className="disabled">
+          month
+        </option>
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>
         <option value="Mar">Mar</option>
